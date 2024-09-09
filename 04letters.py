@@ -16,3 +16,4 @@ cv2.putText(img, "아름다운 강산 -이용희", (50,470), cv2.FONT_HERSHEY_CO
 cv2.imshow('letters', img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
+//
