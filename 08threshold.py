@@ -7,9 +7,32 @@ from fontTools.misc.plistlib import totree
 
 #첫번째 방법
 #127로 중간숫자 고정
-img = cv2.imread('./img/sudoku.png', cv2.IMREAD_GRAYSCALE)
+img = cv2.imread('./img/gray_gradient.jpg', cv2.IMREAD_GRAYSCALE)
 thresh_np = np.zeros_like(img)
-thresh_np[img>60] = 255
+thresh_np[img>171] = 255
+thresh_np[(img > 128) & (img < 171)] = 128
+thresh_np[(img < 128) & (img > 64)] = 64
+
+thresh_np = np.zeros_like(img)
+thresh_np[img>64] = 64
+thresh_np[img>128] = 128
+thresh_np[img>171] = 255
+
+thresh_np = np.zeros_like(img)
+ysize, xsize = img.shape
+
+for x in range(xsize):
+    for y in range(ysize):
+        if(img[y,x]) > 64:
+            thresh_np[y,x] = 64
+        if(img[y,x])>128:
+            thresh_np[y,x] = 128
+        if(img[y,x])>171:
+            thresh_np[y,x] = 255
+
+
+
+
 _, thresh_cv = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
 
 print(thresh_np.shape)
