@@ -20,7 +20,7 @@ thresh_np[img>171] = 255
 
 thresh_np = np.zeros_like(img)
 ysize, xsize = img.shape
-
+print(img.shape)
 for x in range(xsize):
     for y in range(ysize):
         if(img[y,x]) > 64:
